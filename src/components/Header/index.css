@@ -1,0 +1,31 @@
+.header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 50px;
+    background-color: #fafafb;
+    border-bottom: 1px solid #eee;
+}
+
+.search-form {
+    margin: 10px;
+}
+
+.search-form__input {
+    padding: 5px;
+    width: 500px;
+    border: 1px solid #07c;
+    border-right: none;
+    outline: none;
+}
+
+.search-form__button {
+    padding: 5px 15px;
+    background-color: #0095ff;
+    border: 1px solid #07c;
+    border-left: none;
+    color: white;
+    cursor: pointer;
+    outline: none;
+}

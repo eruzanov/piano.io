@@ -1,11 +1,26 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {render} from 'react-dom';
+import {createStore, applyMiddleware} from 'redux';
+import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
+import reducer from './reducer';
+import axios from 'axios';
+import App from './components/App';
 import 'normalize.css';
 
-class App extends Component {
-  render() {
-    return <a href="http://piano.io/">piano.io</a>;
-  }
-}
+axios.defaults.baseURL = 'https://api.stackexchange.com/2.2';
 
-render(<App/>, document.querySelector('#app'));
+const composeEnhancers =
+  typeof window === 'object' &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
+
+const enhancer = composeEnhancers(applyMiddleware(thunk));
+const store = createStore(reducer, enhancer);
+
+render(
+  <Provider store={store}>
+    <App/>
+  </Provider>,
+  document.querySelector('#app')
+);
