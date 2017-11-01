@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {API_KEY, SEARCH_RESULT} from './const';
+import {API_KEY, SEARCH_RESULT, SIDE_PANEL} from './const';
 
 export const search = intitle => dispatch => {
   axios
@@ -17,4 +17,8 @@ export const search = intitle => dispatch => {
       dispatch({type: SEARCH_RESULT, data})
     })
     .catch(err => console.log(err));
+};
+
+export const sidePanel = open => dispatch => {
+  dispatch({type: SIDE_PANEL, open});
 };

@@ -17,7 +17,6 @@
     width: 500px;
     border: 1px solid #07c;
     border-right: none;
-    outline: none;
 }
 
 .search-form__button {
@@ -27,5 +26,4 @@
     border-left: none;
     color: white;
     cursor: pointer;
-    outline: none;
 }
