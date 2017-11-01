@@ -19,6 +19,6 @@ export const search = intitle => dispatch => {
     .catch(err => console.log(err));
 };
 
-export const sidePanel = open => dispatch => {
-  dispatch({type: SIDE_PANEL, open});
+export const sidePanel = payload => dispatch => {
+  dispatch({type: SIDE_PANEL, payload});
 };

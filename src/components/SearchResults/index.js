@@ -6,7 +6,7 @@ import './index.css';
 class SearchResults extends Component {
   render() {
     return (
-      <div className="search-results" onClick={this.props.sidePanel}>
+      <div className="search-results">
         <table>
           <thead>
           <tr>
@@ -20,20 +20,45 @@ class SearchResults extends Component {
           {this.props.items.map(item =>
             <tr key={item.question_id}>
               <td className="user-info">
-                <a href={`#${item.owner.display_name}`}>
+                <a href="#"
+                   onClick={e => {
+                     e.preventDefault();
+                     this.props.sidePanel({user: item.owner.display_name});
+                   }}
+                >
                   <img className="user-avatar" src={item.owner.profile_image} alt={item.owner.display_name}/>
                   {item.owner.display_name}
                 </a>
               </td>
               <td>
-                <a href="#">{item.title}</a>
+                <a href="#"
+                   onClick={e => {
+                     e.preventDefault();
+                     this.props.sidePanel({question: item.question_id});
+                   }}
+                >{item.title}</a>
               </td>
               <td>
-                <a href="#" style={{fontSize: 20}}>{item.answer_count}</a>
+                <a
+                  href="#"
+                  style={{fontSize: 20}}
+                  onClick={e => {
+                    e.preventDefault();
+                    this.props.sidePanel({question: item.question_id});
+                  }}
+                >{item.answer_count}</a>
               </td>
               <td>
                 {item.tags.map((value, key) =>
-                  <a key={key} href="#" className="tag">{value}</a>
+                  <a
+                    key={key}
+                    href="#"
+                    className="tag"
+                    onClick={e => {
+                      e.preventDefault();
+                      this.props.sidePanel({tag: value});
+                    }}
+                  >{value}</a>
                 )}
               </td>
             </tr>
@@ -48,7 +73,7 @@ class SearchResults extends Component {
 const mapStateToProps = state => state.searchResults;
 
 const mapDispatchToProps = dispatch => ({
-  sidePanel: () => dispatch(sidePanel(true))
+  sidePanel: payload => dispatch(sidePanel(payload))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);

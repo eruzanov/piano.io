@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {sidePanel} from '../../actions';
+import QuestionInfo from '../QuestionInfo';
 import './index.css';
 
 class SidePanel extends Component {
@@ -18,7 +19,9 @@ class SidePanel extends Component {
       >
         <div className="side-panel__overlay" ref={el => this.overlay = el}/>
         <div className="side-panel__container">
-          {this.props.children}
+          {sidePanel.user && 'user'}
+          {sidePanel.question && <QuestionInfo id={sidePanel.question}/>}
+          {sidePanel.tag && 'tag'}
         </div>
       </div>
     );
