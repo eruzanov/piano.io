@@ -8,7 +8,7 @@ import axios from 'axios';
 import App from './components/App';
 import 'normalize.css';
 
-import {search} from './actions'; // todo remove
+// import {search} from './actions'; // todo remove
 
 axios.defaults.baseURL = 'https://api.stackexchange.com/2.2';
 
@@ -20,7 +20,7 @@ const composeEnhancers =
 const enhancer = composeEnhancers(applyMiddleware(thunk));
 const store = createStore(reducer, enhancer);
 
-store.dispatch(search('react'));  // todo remove
+// store.dispatch(search('react'));  // todo remove
 
 render(
   <Provider store={store}>
