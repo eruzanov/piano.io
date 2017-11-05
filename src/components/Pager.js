@@ -5,7 +5,7 @@ import SearchResults from './SearchResults';
 import SearchByUser from './SearchByUser';
 import QuestionInfo from './QuestionInfo';
 import SearchByTag from './SearchByTag';
-import './app.css';
+import './pager.css';
 
 const App = ({queryParams}) => {
   switch (true) {

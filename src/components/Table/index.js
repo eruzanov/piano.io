@@ -7,10 +7,26 @@ export default class extends Component {
       <table className="search-results">
         <thead>
         <tr>
-          <th>автор вопроса</th>
-          <th>тема</th>
-          <th>количество ответов</th>
-          <th>теги</th>
+          <th onClick={() => this.props.onSortByAuthor()}>
+            автор вопроса
+            {this.props.sort.author === 'desc' && <span className="sort-desc">▾</span>}
+            {this.props.sort.author === 'asc' && <span className="sort-asc">▾</span>}
+          </th>
+          <th onClick={() => this.props.onSortByTitle()}>
+            тема
+            {this.props.sort.title === 'desc' && <span className="sort-desc">▾</span>}
+            {this.props.sort.title === 'asc' && <span className="sort-asc">▾</span>}
+          </th>
+          <th onClick={() => this.props.onSortByCountAnswer()}>
+            количество ответов
+            {this.props.sort.countAnswer === 'desc' && <span className="sort-desc">▾</span>}
+            {this.props.sort.countAnswer === 'asc' && <span className="sort-asc">▾</span>}
+          </th>
+          <th onClick={() => this.props.onSortByTags()}>
+            теги
+            {this.props.sort.tags === 'desc' && <span className="sort-desc">▾</span>}
+            {this.props.sort.tags === 'asc' && <span className="sort-asc">▾</span>}
+          </th>
         </tr>
         </thead>
         <tbody>

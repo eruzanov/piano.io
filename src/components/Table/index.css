@@ -46,6 +46,16 @@ table thead th {
     padding: 5px;
     text-transform: capitalize;
     border-bottom: 2px solid #e4e6e8;
+    cursor: pointer;
+}
+
+.sort-asc, .sort-desc {
+    margin: 0 5px;
+}
+
+.sort-asc {
+    display: inline-block;
+    transform: rotate(180deg);
 }
 
 table tbody td {

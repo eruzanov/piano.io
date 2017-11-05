@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import {changeParams, search} from './actions';
 import reducer from './reducer';
 import axios from 'axios';
-import App from './components/App';
+import Pager from './components/Pager';
 import 'normalize.css';
 
 axios.defaults.baseURL = 'https://api.stackexchange.com/2.2';
@@ -43,7 +43,7 @@ window.addEventListener('hashchange', onHashchange);
 
 render(
   <Provider store={store}>
-    <App/>
+    <Pager/>
   </Provider>,
   document.querySelector('#app')
 );
