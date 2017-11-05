@@ -3,12 +3,11 @@ import {render} from 'react-dom';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
+import {changeParams, search} from './actions';
 import reducer from './reducer';
 import axios from 'axios';
 import App from './components/App';
 import 'normalize.css';
-
-// import {search} from './actions'; // todo remove
 
 axios.defaults.baseURL = 'https://api.stackexchange.com/2.2';
 
@@ -20,7 +19,27 @@ const composeEnhancers =
 const enhancer = composeEnhancers(applyMiddleware(thunk));
 const store = createStore(reducer, enhancer);
 
-// store.dispatch(search('react'));  // todo remove
+function parse(hash) {
+  return hash
+    .substr(1)
+    .split('=')
+    .reduce((memo, item, index, arr) => {
+      if (index % 2) {
+        return memo;
+      } else {
+        memo[item] = arr[index + 1];
+        return memo
+      }
+    }, {});
+}
+
+function onHashchange() {
+  const params = parse(location.hash);
+  if (params.search) search(params.search)(store.dispatch);
+  changeParams(params)(store.dispatch);
+}
+onHashchange();
+window.addEventListener('hashchange', onHashchange);
 
 render(
   <Provider store={store}>

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {SITE} from '../../const';
 import Markdown from 'react-markdown';
 import './index.css';
 
@@ -16,14 +17,14 @@ export default class extends Component {
     axios
       .get(
         `questions/${this.props.id}`,
-        {params: {site: 'stackoverflow', filter: '!9YdnSIN16'}}
+        {params: {site: SITE, filter: '!9YdnSIN16'}}
       )
       .then(({data}) => this.setState(Object.assign({}, data.items[0])))
       .catch(err => console.log(err));
     axios
       .get(
         `questions/${this.props.id}/answers`,
-        {params: {site: 'stackoverflow', filter: '!9YdnSLiq6'}}
+        {params: {site: SITE, filter: '!9YdnSLiq6'}}
       )
       .then(({data}) => this.setState(Object.assign({}, this.state, {answers: data.items})))
       .catch(err => console.log(err));

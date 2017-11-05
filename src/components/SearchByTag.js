@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {sidePanel} from '../actions';
+import {SITE} from '../const'
 import Table from './Table';
 
 export default class extends Component {
@@ -14,7 +14,7 @@ export default class extends Component {
       .get(
         'questions',
         {params: {
-          site: 'stackoverflow',
+          site: SITE,
           tagged: this.props.tag,
         }}
       )
@@ -23,8 +23,6 @@ export default class extends Component {
   }
 
   render() {
-    return (
-      <Table sidePanel={sidePanel} items={this.state.items}/>
-    );
+    return <Table items={this.state.items}/>;
   }
 }

@@ -2,11 +2,6 @@ import React, {Component} from 'react';
 import './index.css';
 
 export default class extends Component {
-  onClick(e, payload) {
-    e.preventDefault();
-    this.props.sidePanel(payload);
-  }
-
   render() {
     return (
       <table className="search-results">
@@ -22,22 +17,22 @@ export default class extends Component {
         {this.props.items.map(item =>
           <tr key={item.question_id}>
             <td className="user-info">
-              <a href="#" onClick={e => this.onClick(e, {user: item.owner.user_id})}>
+              <a href={`#user=${item.owner.user_id}`}>
                 <img className="user-avatar" src={item.owner.profile_image} alt={item.owner.display_name}/>
                 {item.owner.display_name}
               </a>
             </td>
             <td>
-              <a href="#" onClick={e => this.onClick(e, {question: item.question_id})}>{item.title}</a>
+              <a href={`#question=${item.question_id}`}>{item.title}</a>
             </td>
             <td>
-              <a href="#" style={{fontSize: 20}} onClick={e => this.onClick(e, {question: item.question_id})}>
+              <a href={`#question=${item.question_id}`} style={{fontSize: 20}}>
                 {item.answer_count}
               </a>
             </td>
             <td>
               {item.tags.map((value, key) =>
-                <a key={key} href="#" className="tag" onClick={e => this.onClick(e, {tag: value})}>{value}</a>
+                <a key={key} href={`#tag=${value}`} className="tag">{value}</a>
               )}
             </td>
           </tr>

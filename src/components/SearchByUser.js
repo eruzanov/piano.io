@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {sidePanel} from '../actions';
+import {SITE} from '../const';
 import Table from './Table';
 
 export default class extends Component {
@@ -11,19 +11,12 @@ export default class extends Component {
 
   componentDidMount() {
     axios
-      .get(
-        `/users/${this.props.user}/questions`,
-        {params: {
-          site: 'stackoverflow',
-        }}
-      )
+      .get(`/users/${this.props.user}/questions`, {params: {site: SITE}})
       .then(({data}) => this.setState({data}))
       .catch(err => console.log(err));
   }
 
   render() {
-    return (
-      <Table sidePanel={sidePanel} items={this.state.items}/>
-    );
+    return <Table items={this.state.items}/>;
   }
 }
