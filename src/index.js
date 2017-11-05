@@ -3,7 +3,7 @@ import {render} from 'react-dom';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
-import {changeParams, search} from './actions';
+import {changeParams, search, questionsByUser,questionsByTag} from './actions';
 import reducer from './reducer';
 import axios from 'axios';
 import Pager from './components/Pager';
@@ -36,6 +36,8 @@ function parse(hash) {
 function onHashchange() {
   const params = parse(location.hash);
   if (params.search) search(params.search)(store.dispatch);
+  if (params.user) questionsByUser(params.user)(store.dispatch);
+  if (params.tag) questionsByTag(params.tag)(store.dispatch);
   changeParams(params)(store.dispatch);
 }
 onHashchange();

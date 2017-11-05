@@ -1,5 +1,7 @@
 import {
-  SEARCH_RESULT,
+  QUESTIONS,
+  QUESTIONS_BY_USER,
+  QUESTIONS_BY_TAG,
   CHANGE_PARAMS,
   SORT_BY_AUTHOR,
   SORT_BY_TITLE,
@@ -8,7 +10,9 @@ import {
 } from './const';
 
 const initialState = {
-  searchResults: {items: [], sort: {}},
+  questions: {items: [], sort: {}},
+  questionsByUser: {items: [], sort: {}},
+  questionsByTag: {items: [], sort: {}},
   sidePanel: false,
   queryParams: {},
 };
@@ -17,8 +21,12 @@ export default (state = initialState, action) => {
   let items = [], sort;
 
   switch (action.type) {
-    case SEARCH_RESULT:
-      return Object.assign({}, state, {searchResults: {items: action.items, sort: {}}});
+    case QUESTIONS:
+      return Object.assign({}, state, {questions: {items: action.items, sort: {}}});
+      case QUESTIONS_BY_USER:
+      return Object.assign({}, state, {questionsByUser: {items: action.items, sort: {}}});
+      case QUESTIONS_BY_TAG:
+      return Object.assign({}, state, {questionsByTag: {items: action.items, sort: {}}});
     case CHANGE_PARAMS:
       return Object.assign({}, state, {queryParams: action.params});
     case SORT_BY_AUTHOR:

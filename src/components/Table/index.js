@@ -3,29 +3,34 @@ import './index.css';
 
 export default class extends Component {
   render() {
+    const {author, title, countAnswer, tags} = this.props.sort;
     return (
       <table className="search-results">
         <thead>
         <tr>
           <th onClick={() => this.props.onSortByAuthor()}>
             автор вопроса
-            {this.props.sort.author === 'desc' && <span className="sort-desc">▾</span>}
-            {this.props.sort.author === 'asc' && <span className="sort-asc">▾</span>}
+            {author === 'desc' && <span className="sort-desc">▾</span>}
+            {author === 'asc' && <span className="sort-asc">▾</span>}
+            {!author && <span className="sort">▾</span>}
           </th>
           <th onClick={() => this.props.onSortByTitle()}>
             тема
-            {this.props.sort.title === 'desc' && <span className="sort-desc">▾</span>}
-            {this.props.sort.title === 'asc' && <span className="sort-asc">▾</span>}
+            {title === 'desc' && <span className="sort-desc">▾</span>}
+            {title === 'asc' && <span className="sort-asc">▾</span>}
+            {!title && <span className="sort">▾</span>}
           </th>
           <th onClick={() => this.props.onSortByCountAnswer()}>
             количество ответов
-            {this.props.sort.countAnswer === 'desc' && <span className="sort-desc">▾</span>}
-            {this.props.sort.countAnswer === 'asc' && <span className="sort-asc">▾</span>}
+            {countAnswer === 'desc' && <span className="sort-desc">▾</span>}
+            {countAnswer === 'asc' && <span className="sort-asc">▾</span>}
+            {!countAnswer && <span className="sort">▾</span>}
           </th>
           <th onClick={() => this.props.onSortByTags()}>
             теги
-            {this.props.sort.tags === 'desc' && <span className="sort-desc">▾</span>}
-            {this.props.sort.tags === 'asc' && <span className="sort-asc">▾</span>}
+            {tags === 'desc' && <span className="sort-desc">▾</span>}
+            {tags === 'asc' && <span className="sort-asc">▾</span>}
+            {!tags && <span className="sort">▾</span>}
           </th>
         </tr>
         </thead>

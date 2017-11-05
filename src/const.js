@@ -1,7 +1,9 @@
 export const API_KEY = 'U4DMV*8nvpm3EOpvf69Rxw((';
 export const SITE = 'stackoverflow';
 
-export const SEARCH_RESULT = 'SEARCH_RESULT';
+export const QUESTIONS = 'QUESTIONS';
+export const QUESTIONS_BY_USER = 'QUESTIONS_BY_USER';
+export const QUESTIONS_BY_TAG = 'QUESTIONS_BY_TAG';
 export const CHANGE_PARAMS = 'CHANGE_PARAMS';
 
 export const SORT_BY_AUTHOR = 'SORT_BY_AUTHOR';

@@ -49,6 +49,11 @@ table thead th {
     cursor: pointer;
 }
 
+.sort {
+    margin: 0 5px;
+    opacity: 0;
+}
+
 .sort-asc, .sort-desc {
     margin: 0 5px;
 }

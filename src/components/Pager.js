@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Header from './Header';
-import SearchResults from './SearchResults';
-import SearchByUser from './SearchByUser';
+import SearchResults from './Questions';
+import SearchByUser from './QuestionsByUser';
 import QuestionInfo from './QuestionInfo';
-import SearchByTag from './SearchByTag';
+import SearchByTag from './QuestionsByTag';
 import './pager.css';
 
 const App = ({queryParams}) => {
