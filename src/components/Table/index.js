@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Link from '../Link';
 import './index.css';
 
 export default class extends Component {
@@ -38,10 +39,10 @@ export default class extends Component {
         {this.props.items.map(item =>
           <tr key={item.question_id}>
             <td className="user-info">
-              <a href={`#user=${item.owner.user_id}`}>
+              <Link to={{user: item.owner.user_id}}>
                 <img className="user-avatar" src={item.owner.profile_image} alt={item.owner.display_name}/>
                 {item.owner.display_name}
-              </a>
+              </Link>
             </td>
             <td>
               <a href={`#question=${item.question_id}`}>{item.title}</a>
@@ -53,7 +54,7 @@ export default class extends Component {
             </td>
             <td>
               {item.tags.map((value, key) =>
-                <a key={key} href={`#tag=${value}`} className="tag">{value}</a>
+                <Link key={key} to={{tag: value}} className="tag">{value}</Link>
               )}
             </td>
           </tr>

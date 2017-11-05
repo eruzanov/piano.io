@@ -3,6 +3,7 @@ import {render} from 'react-dom';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
+import queryString from 'query-string';
 import {changeParams, search, questionsByUser,questionsByTag} from './actions';
 import reducer from './reducer';
 import axios from 'axios';
@@ -19,22 +20,8 @@ const composeEnhancers =
 const enhancer = composeEnhancers(applyMiddleware(thunk));
 const store = createStore(reducer, enhancer);
 
-function parse(hash) {
-  return hash
-    .substr(1)
-    .split('=')
-    .reduce((memo, item, index, arr) => {
-      if (index % 2) {
-        return memo;
-      } else {
-        memo[item] = arr[index + 1];
-        return memo
-      }
-    }, {});
-}
-
 function onHashchange() {
-  const params = parse(location.hash);
+  const params = queryString.parse(location.hash);
   if (params.search) search(params.search)(store.dispatch);
   if (params.user) questionsByUser(params.user)(store.dispatch);
   if (params.tag) questionsByTag(params.tag)(store.dispatch);

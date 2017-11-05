@@ -13,7 +13,6 @@ const initialState = {
   questions: {items: [], sort: {}},
   questionsByUser: {items: [], sort: {}},
   questionsByTag: {items: [], sort: {}},
-  sidePanel: false,
   queryParams: {},
 };
 
@@ -23,9 +22,9 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case QUESTIONS:
       return Object.assign({}, state, {questions: {items: action.items, sort: {}}});
-      case QUESTIONS_BY_USER:
+    case QUESTIONS_BY_USER:
       return Object.assign({}, state, {questionsByUser: {items: action.items, sort: {}}});
-      case QUESTIONS_BY_TAG:
+    case QUESTIONS_BY_TAG:
       return Object.assign({}, state, {questionsByTag: {items: action.items, sort: {}}});
     case CHANGE_PARAMS:
       return Object.assign({}, state, {queryParams: action.params});

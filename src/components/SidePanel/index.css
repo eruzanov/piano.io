@@ -1,0 +1,44 @@
+.side-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 0;
+}
+
+.side-panel__container {
+    position: absolute;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    left: 100%;
+    width: 75%;
+    overflow-x: scroll;
+    background-color: white;
+    transition: left .5s, right .5s;
+}
+
+.side-panel__overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0, .4);
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity .5s;
+}
+
+.side-panel--open {
+    width: 100%;
+}
+
+.side-panel--open .side-panel__overlay {
+    opacity: 1;
+}
+
+.side-panel--open .side-panel__container {
+    right: 0%;
+    left: 25%;
+}

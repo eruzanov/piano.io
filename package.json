@@ -17,6 +17,7 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.7",
     "normalize.css": "^7.0.0",
+    "query-string": "^5.0.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-markdown": "^2.5.0",
